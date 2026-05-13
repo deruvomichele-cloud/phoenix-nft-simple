@@ -33,20 +33,20 @@ video{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#000
 <div class="grid" id="grid"></div>
 <script>
 const N=[
-  {n:"Phoenix #vmw1oR",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"}],v:"https://litter.catbox.moe/6v0ezv.mp4",q:"You must be the change you wish to see in the world.",a:"Gandhi"},
-  {n:"Phoenix #JI1WPh",e:[{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/qiw0o5.mp4",q:"Introduce a little anarchy. I am an agent of chaos.",a:"The Joker"},
-  {n:"Phoenix #XMKLoL",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"}],v:"https://litter.catbox.moe/ainjmr.mp4",q:"Darkness cannot drive out darkness; only light can do that.",a:"MLK Jr."},
-  {n:"Phoenix #d2bAZY",e:[{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/5jsyu1.mp4",q:"Do, or do not. There is no try.",a:"Yoda · Star Wars"},
-  {n:"Phoenix #06NKPS",e:[{id:"air",n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/k3la30.mp4",q:"All warfare is based on deception.",a:"Sun Tzu"},
-  {n:"Phoenix #MrMV8t",e:[{id:"light",n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/b1uibh.mp4",q:"What we do in life echoes in eternity.",a:"Maximus · Il Gladiatore"},
-  {n:"Phoenix #7gbh09",e:[{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/1trs2y.mp4",q:"Power is not a means; it is an end.",a:"George Orwell"},
-  {n:"Phoenix #sDDifU",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/vhu5xa.mp4",q:"I am inevitable. Back to me.",a:"Thanos · Avengers"},
-  {n:"Phoenix #ZFgQmi",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{id:"light",n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/s1qcw4.mp4",q:"Get busy living, or get busy dying.",a:"Shawshank Redemption"},
-  {n:"Phoenix #GbZo45",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/fol3wa.mp4",q:"I find your lack of faith disturbing.",a:"Darth Vader · Star Wars"},
-  {n:"Phoenix #QxJyBC",e:[{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/tdh2jl.mp4",q:"War. War never changes.",a:"Fallout"},
-  {n:"Phoenix #TKmgjS",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"air",n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/bod4f1.mp4",q:"Praise the Sun! Let that fire burn bright!",a:"Solaire · Dark Souls"},
-  {n:"Phoenix #HP3bTZ",e:[{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/qjbcgi.mp4",q:"Power resides where men believe it resides.",a:"Lord Varys · GOT"},
-  {n:"Phoenix #8UMXun",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/op6v7y.mp4",q:"It's dangerous to go alone! Take this.",a:"The Legend of Zelda"},
+  {n:"Phoenix #vmw1oR",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"}],v:"https://litter.catbox.moe/6v0ezv.mp4",q:"You must be the change you wish to see in the world.",a:"Gandhi"},
+  {n:"Phoenix #JI1WPh",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/qiw0o5.mp4",q:"Introduce a little anarchy. I am an agent of chaos.",a:"The Joker"},
+  {n:"Phoenix #XMKLoL",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"}],v:"https://litter.catbox.moe/ainjmr.mp4",q:"Darkness cannot drive out darkness; only light can do that.",a:"MLK Jr."},
+  {n:"Phoenix #d2bAZY",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/5jsyu1.mp4",q:"Do, or do not. There is no try.",a:"Yoda"},
+  {n:"Phoenix #06NKPS",e:[{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/k3la30.mp4",q:"All warfare is based on deception.",a:"Sun Tzu"},
+  {n:"Phoenix #MrMV8t",e:[{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/b1uibh.mp4",q:"What we do in life echoes in eternity.",a:"Maximus"},
+  {n:"Phoenix #7gbh09",e:[{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/1trs2y.mp4",q:"Power is not a means; it is an end.",a:"Orwell"},
+  {n:"Phoenix #sDDifU",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/vhu5xa.mp4",q:"I am inevitable.",a:"Thanos"},
+  {n:"Phoenix #ZFgQmi",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/s1qcw4.mp4",q:"Get busy living, or get busy dying.",a:"Shawshank"},
+  {n:"Phoenix #GbZo45",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/fol3wa.mp4",q:"I find your lack of faith disturbing.",a:"Darth Vader"},
+  {n:"Phoenix #QxJyBC",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/tdh2jl.mp4",q:"War. War never changes.",a:"Fallout"},
+  {n:"Phoenix #TKmgjS",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/bod4f1.mp4",q:"Praise the Sun!",a:"Dark Souls"},
+  {n:"Phoenix #HP3bTZ",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/qjbcgi.mp4",q:"Power resides where men believe it resides.",a:"Varys · GOT"},
+  {n:"Phoenix #8UMXun",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/op6v7y.mp4",q:"It's dangerous to go alone! Take this.",a:"Zelda"},
 ];
 const grid=document.getElementById('grid');
 N.forEach(n=>{
@@ -63,9 +63,7 @@ N.forEach(n=>{
   grid.appendChild(card);
   const v=card.querySelector('video');
   const play=()=>v.play().catch(()=>{});
-  play();
-  v.addEventListener('loadeddata',play);
-  v.addEventListener('canplay',play);
+  play();v.addEventListener('loadeddata',play);v.addEventListener('canplay',play);
 });
 </script>
 </body>
