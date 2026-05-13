@@ -12,9 +12,10 @@ header{padding:24px 32px;display:flex;align-items:center;gap:12px;border-bottom:
 h1{font-size:22px;font-weight:800;background:linear-gradient(90deg,#ffd86b,#ff6a3a,#c77dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 header p{color:#8b8d9c;font-size:12px;margin-top:2px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:32px}
-.card{background:linear-gradient(180deg,#11131c,#0a0b12);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);transition:transform .2s}
+.card{background:linear-gradient(180deg,#11131c,#0a0b12);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);transition:transform .2s;cursor:pointer}
 .card:hover{transform:translateY(-3px)}
-video{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#000}
+.media{position:relative;aspect-ratio:1/1;background:#000}
+video{width:100%;height:100%;object-fit:cover;display:block}
 .info{padding:14px}
 .name{font-size:15px;font-weight:700;margin-bottom:6px}
 .elements{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
@@ -32,39 +33,48 @@ video{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#000
 </header>
 <div class="grid" id="grid"></div>
 <script>
+const BASE='https://github.com/deruvomichele-cloud/phoenix-nft-simple/releases/download/v1.0/';
 const N=[
-  {n:"Phoenix #vmw1oR",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"}],v:"https://litter.catbox.moe/6v0ezv.mp4",q:"You must be the change you wish to see in the world.",a:"Gandhi"},
-  {n:"Phoenix #JI1WPh",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/qiw0o5.mp4",q:"Introduce a little anarchy. I am an agent of chaos.",a:"The Joker"},
-  {n:"Phoenix #XMKLoL",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"}],v:"https://litter.catbox.moe/ainjmr.mp4",q:"Darkness cannot drive out darkness; only light can do that.",a:"MLK Jr."},
-  {n:"Phoenix #d2bAZY",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/5jsyu1.mp4",q:"Do, or do not. There is no try.",a:"Yoda"},
-  {n:"Phoenix #06NKPS",e:[{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/k3la30.mp4",q:"All warfare is based on deception.",a:"Sun Tzu"},
-  {n:"Phoenix #MrMV8t",e:[{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/b1uibh.mp4",q:"What we do in life echoes in eternity.",a:"Maximus"},
-  {n:"Phoenix #7gbh09",e:[{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/1trs2y.mp4",q:"Power is not a means; it is an end.",a:"Orwell"},
-  {n:"Phoenix #sDDifU",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/vhu5xa.mp4",q:"I am inevitable.",a:"Thanos"},
-  {n:"Phoenix #ZFgQmi",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/s1qcw4.mp4",q:"Get busy living, or get busy dying.",a:"Shawshank"},
-  {n:"Phoenix #GbZo45",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/fol3wa.mp4",q:"I find your lack of faith disturbing.",a:"Darth Vader"},
-  {n:"Phoenix #QxJyBC",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/tdh2jl.mp4",q:"War. War never changes.",a:"Fallout"},
-  {n:"Phoenix #TKmgjS",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/bod4f1.mp4",q:"Praise the Sun!",a:"Dark Souls"},
-  {n:"Phoenix #HP3bTZ",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/qjbcgi.mp4",q:"Power resides where men believe it resides.",a:"Varys · GOT"},
-  {n:"Phoenix #8UMXun",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/op6v7y.mp4",q:"It's dangerous to go alone! Take this.",a:"Zelda"},
+  {n:"Phoenix #vmw1oR",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"}],v:BASE+"p1.mp4",q:"You must be the change you wish to see in the world.",a:"Gandhi"},
+  {n:"Phoenix #JI1WPh",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:BASE+"p2.mp4",q:"Introduce a little anarchy. I am an agent of chaos.",a:"The Joker"},
+  {n:"Phoenix #XMKLoL",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"}],v:BASE+"p3.mp4",q:"Darkness cannot drive out darkness; only light can do that.",a:"MLK Jr."},
+  {n:"Phoenix #d2bAZY",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:BASE+"p4.mp4",q:"Do, or do not. There is no try.",a:"Yoda"},
+  {n:"Phoenix #06NKPS",e:[{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:BASE+"p5.mp4",q:"All warfare is based on deception.",a:"Sun Tzu"},
+  {n:"Phoenix #MrMV8t",e:[{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:BASE+"p6.mp4",q:"What we do in life echoes in eternity.",a:"Maximus"},
+  {n:"Phoenix #7gbh09",e:[{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:BASE+"p7.mp4",q:"Power is not a means; it is an end.",a:"Orwell"},
+  {n:"Phoenix #sDDifU",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:BASE+"p8.mp4",q:"I am inevitable.",a:"Thanos"},
+  {n:"Phoenix #ZFgQmi",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:BASE+"p9.mp4",q:"Get busy living, or get busy dying.",a:"Shawshank"},
+  {n:"Phoenix #GbZo45",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:BASE+"p10.mp4",q:"I find your lack of faith disturbing.",a:"Darth Vader"},
+  {n:"Phoenix #QxJyBC",e:[{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:BASE+"p11.mp4",q:"War. War never changes.",a:"Fallout"},
+  {n:"Phoenix #TKmgjS",e:[{n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:BASE+"p12.mp4",q:"Praise the Sun!",a:"Dark Souls"},
+  {n:"Phoenix #HP3bTZ",e:[{n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"},{n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:BASE+"p13.mp4",q:"Power resides where men believe it resides.",a:"Varys · GOT"},
+  {n:"Phoenix #8UMXun",e:[{n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:BASE+"p14.mp4",q:"It's dangerous to go alone! Take this.",a:"Zelda"},
 ];
 const grid=document.getElementById('grid');
+const videos=[];
 N.forEach(n=>{
   const glow=n.e.map(e=>`0 0 50px ${e.g}`).join(',');
   const card=document.createElement('div');
   card.className='card';card.style.boxShadow=glow;
-  card.innerHTML=`<video src="${n.v}" autoplay loop muted playsinline preload="auto"></video>
+  card.innerHTML=`<div class="media"><video src="${n.v}" loop muted playsinline preload="auto" controls></video></div>
     <div class="info">
       <div class="name">${n.n}</div>
       <div class="elements">${n.e.map(e=>`<span class="el" style="border-color:${e.c};background:${e.g}">${e.em} ${e.n}</span>`).join('')}</div>
       <div class="quote">&ldquo;${n.q}&rdquo;<span class="quote-author">— ${n.a}</span></div>
-      <div class="tag">✨ Living NFT</div>
+      <div class="tag">✨ Living NFT · Kling O1</div>
     </div>`;
   grid.appendChild(card);
   const v=card.querySelector('video');
+  videos.push(v);
   const play=()=>v.play().catch(()=>{});
-  play();v.addEventListener('loadeddata',play);v.addEventListener('canplay',play);
+  v.addEventListener('loadeddata',play);
+  v.addEventListener('canplay',play);
+  new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) play(); });
+  },{threshold:0.2}).observe(v);
+  card.addEventListener('click',()=>v.paused?play():v.pause());
 });
+document.addEventListener('click',()=>videos.forEach(v=>v.play().catch(()=>{})),{once:true});
 </script>
 </body>
 </html>
