@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Phoenix Forge 🔥</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#05060b;color:#f5f5fa;font-family:Inter,system-ui,sans-serif;min-height:100vh}
+header{padding:24px 32px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.logo{font-size:36px;filter:drop-shadow(0 0 16px rgba(255,106,58,0.7))}
+h1{font-size:22px;font-weight:800;background:linear-gradient(90deg,#ffd86b,#ff6a3a,#c77dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:#8b8d9c;font-size:12px;margin-top:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;padding:32px}
+.card{background:linear-gradient(180deg,#11131c,#0a0b12);border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);transition:transform .2s}
+.card:hover{transform:translateY(-3px)}
+video{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#000}
+.info{padding:14px}
+.name{font-size:15px;font-weight:700;margin-bottom:6px}
+.elements{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.el{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;font-size:11px;font-weight:600;border:1px solid;color:#fff}
+.quote{font-size:11px;font-style:italic;color:#a0a3b5;border-left:2px solid rgba(255,216,107,0.4);padding-left:8px;margin-top:8px;line-height:1.5}
+.quote-author{font-size:10px;color:#ffd86b;font-style:normal;font-weight:700;margin-top:3px;display:block}
+.tag{font-size:11px;color:#ffd86b;font-weight:600;margin-top:8px;text-align:center}
+@media(max-width:600px){.grid{padding:16px;gap:14px;grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo">🔥</span>
+  <div><h1>Phoenix Forge</h1><p>Unique elemental Phoenix NFTs · Animated by Kling</p></div>
+</header>
+<div class="grid" id="grid"></div>
+<script>
+const N=[
+  {n:"Phoenix #vmw1oR",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"}],v:"https://litter.catbox.moe/6v0ezv.mp4",q:"You must be the change you wish to see in the world.",a:"Gandhi"},
+  {n:"Phoenix #JI1WPh",e:[{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/qiw0o5.mp4",q:"Introduce a little anarchy. I am an agent of chaos.",a:"The Joker"},
+  {n:"Phoenix #XMKLoL",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"}],v:"https://litter.catbox.moe/ainjmr.mp4",q:"Darkness cannot drive out darkness; only light can do that.",a:"MLK Jr."},
+  {n:"Phoenix #d2bAZY",e:[{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/5jsyu1.mp4",q:"Do, or do not. There is no try.",a:"Yoda · Star Wars"},
+  {n:"Phoenix #06NKPS",e:[{id:"air",n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/k3la30.mp4",q:"All warfare is based on deception.",a:"Sun Tzu"},
+  {n:"Phoenix #MrMV8t",e:[{id:"light",n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/b1uibh.mp4",q:"What we do in life echoes in eternity.",a:"Maximus · Il Gladiatore"},
+  {n:"Phoenix #7gbh09",e:[{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/1trs2y.mp4",q:"Power is not a means; it is an end.",a:"George Orwell"},
+  {n:"Phoenix #sDDifU",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"}],v:"https://litter.catbox.moe/vhu5xa.mp4",q:"I am inevitable. Back to me.",a:"Thanos · Avengers"},
+  {n:"Phoenix #ZFgQmi",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{id:"light",n:"Luce",em:"✨",c:"#ffd86b",g:"rgba(255,216,107,0.7)"}],v:"https://litter.catbox.moe/s1qcw4.mp4",q:"Get busy living, or get busy dying.",a:"Shawshank Redemption"},
+  {n:"Phoenix #GbZo45",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/fol3wa.mp4",q:"I find your lack of faith disturbing.",a:"Darth Vader · Star Wars"},
+  {n:"Phoenix #QxJyBC",e:[{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/tdh2jl.mp4",q:"War. War never changes.",a:"Fallout"},
+  {n:"Phoenix #TKmgjS",e:[{id:"fire",n:"Fuoco",em:"🔥",c:"#ff6a3a",g:"rgba(255,106,58,0.65)"},{id:"air",n:"Aria",em:"🌬️",c:"#b6e3ff",g:"rgba(182,227,255,0.55)"}],v:"https://litter.catbox.moe/bod4f1.mp4",q:"Praise the Sun! Let that fire burn bright!",a:"Solaire · Dark Souls"},
+  {n:"Phoenix #HP3bTZ",e:[{id:"lightning",n:"Fulmine",em:"⚡",c:"#c77dff",g:"rgba(199,125,255,0.65)"},{id:"shadow",n:"Ombra",em:"🌑",c:"#9b6bff",g:"rgba(155,107,255,0.65)"}],v:"https://litter.catbox.moe/qjbcgi.mp4",q:"Power resides where men believe it resides.",a:"Lord Varys · GOT"},
+  {n:"Phoenix #8UMXun",e:[{id:"water",n:"Acqua",em:"💧",c:"#3aa9ff",g:"rgba(58,169,255,0.55)"},{id:"earth",n:"Terra",em:"🌿",c:"#7bcf6a",g:"rgba(123,207,106,0.55)"}],v:"https://litter.catbox.moe/op6v7y.mp4",q:"It's dangerous to go alone! Take this.",a:"The Legend of Zelda"},
+];
+const grid=document.getElementById('grid');
+N.forEach(n=>{
+  const glow=n.e.map(e=>`0 0 50px ${e.g}`).join(',');
+  const card=document.createElement('div');
+  card.className='card';card.style.boxShadow=glow;
+  card.innerHTML=`<video src="${n.v}" autoplay loop muted playsinline preload="auto"></video>
+    <div class="info">
+      <div class="name">${n.n}</div>
+      <div class="elements">${n.e.map(e=>`<span class="el" style="border-color:${e.c};background:${e.g}">${e.em} ${e.n}</span>`).join('')}</div>
+      <div class="quote">&ldquo;${n.q}&rdquo;<span class="quote-author">— ${n.a}</span></div>
+      <div class="tag">✨ Living NFT</div>
+    </div>`;
+  grid.appendChild(card);
+  const v=card.querySelector('video');
+  const play=()=>v.play().catch(()=>{});
+  play();
+  v.addEventListener('loadeddata',play);
+  v.addEventListener('canplay',play);
+});
+</script>
+</body>
+</html>
